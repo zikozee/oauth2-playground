@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OAuth 2.0 Playground</title>
+    <script>
+      // OAuth redirect_uris are registered against 127.0.0.1, and sessionStorage
+      // is scoped per-origin — visiting via "localhost" instead breaks the PKCE
+      // flow (verifier written under a different origin than the callback reads
+      // it from). Normalize to 127.0.0.1 before anything else runs.
+      if (window.location.hostname === 'localhost') {
+        window.location.replace(window.location.href.replace('localhost', '127.0.0.1'))
+      }
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
